@@ -48,7 +48,7 @@ print("We note that the Euler method is equivalent to a Runge Kutta 4 scheme wit
 
 
 print("")
-print("Python code for the Euler method:")
+print("Python code for the Runge Kutta method:")
 
 
 
@@ -67,10 +67,10 @@ U[0]=0.5
 for i in range(0,N):  # Python starts indexing rows and columns at 0, not 1 as in the algorithm above
         T[i] = i*delta_t
 for i in range(0,N):  
-        k1=U[i]*np.log(U[i])
-        k2=(U[i]+0.5*k1*delta_t)*np.log((U[i]+0.5*k1*delta_t))
-        k3=(U[i]+0.5*k2*delta_t)*np.log((U[i]+0.5*k2*delta_t))
-        k4=(U[i]+k3*delta_t)*np.log((U[i]+k3*delta_t))
+        k1=-U[i]*np.log(U[i])
+        k2=-(U[i]+0.5*k1*delta_t)*np.log((U[i]+0.5*k1*delta_t))
+        k3=-(U[i]+0.5*k2*delta_t)*np.log((U[i]+0.5*k2*delta_t))
+        k4=-(U[i]+k3*delta_t)*np.log((U[i]+k3*delta_t))
         U[i+1]=U[i]+delta_t*(k1+2*k2+2*k3+k4)/6
 
 # plot the time variations of all the node values
